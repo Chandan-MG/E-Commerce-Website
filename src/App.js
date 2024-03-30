@@ -1,7 +1,12 @@
 
 import './App.css';
-import ProductList from './Products/ProductList';
+import ProductList from './Components/Products/ProductList';
 import { useState } from 'react';
+import Button from "react-bootstrap/Button";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Cart from './Components/Cart/Cart';
 
 const productsArr = [
 
@@ -33,10 +38,23 @@ const productsArr = [
 function App() {
 
   const [products, setProducts] = useState(productsArr);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const cartButtonHandler = () =>{
+    setIsOpen(true);
+  }
   return (
-    <div className="App">
-      <ProductList products={products} />
-    </div>
+    <Container fluid>
+      <Row>
+        <Col><Button variant="primary" onClick={cartButtonHandler}>Cart</Button></Col>
+      </Row>
+      {/* <Row className="App">
+        <ProductList products={products} />
+      </Row> */}
+      <Row>
+        {isOpen && <Cart />}
+      </Row>
+    </Container>
   );
 }
 
