@@ -1,12 +1,14 @@
 
 import './App.css';
 import ProductList from './Components/Products/ProductList';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Cart from './Components/Cart/Cart';
+import CartContextProvider, {CartContext} from './Components/Context/Cart-context';
+// import Header from './Components/Header/Header';
 
 const productsArr = [
 
@@ -36,25 +38,29 @@ const productsArr = [
 ]
 
 function App() {
-
+  const cartCtx = useContext(CartContext);
   const [products, setProducts] = useState(productsArr);
-  const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const cartButtonHandler = () =>{
-    setIsOpen(true);
-  }
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   return (
-    <Container fluid>
-      <Row>
-        <Col><Button variant="primary" onClick={cartButtonHandler}>Cart</Button></Col>
-      </Row>
-      {/* <Row className="App">
-        <ProductList products={products} />
-      </Row> */}
-      <Row>
-        {isOpen && <Cart />}
-      </Row>
-    </Container>
+    <CartContextProvider>
+      <Container fluid>
+        <Row style={{padding:"20px"}}>
+          <Col className="d-flex justify-content-end"><Button variant="dark" onClick={handleShowModal}>Cart ({cartCtx.cartItems.length})</Button></Col>
+        </Row>
+        <Row className="App">
+          <ProductList products={products} />
+        </Row>
+        <Cart closeModal={handleCloseModal} showModal={showModal} />
+      </Container>
+    </CartContextProvider>
   );
 }
 

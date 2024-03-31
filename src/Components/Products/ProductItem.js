@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import './ProductItem.css';
 import Card from 'react-bootstrap/Card';
+import { Button, Col, Container, Row } from "react-bootstrap";
+import {CartContext} from '../Context/Cart-context.js';
 
 const ProductItem = (props) => {
+    const {addToCart} = useContext(CartContext);
+
+    const handleAddToCart =()=>{
+        addToCart(props)
+    }
     return(
-        <div className="container" style={{padding: '20px'}}>
-            <Card style={{ width: '18rem' }}>
-                <Card.Header>
-                <Card.Title><h2>{props.title}</h2></Card.Title>
-                </Card.Header>
-                
-                <Card.Body>
-                    <Card.Img variant="top" src={props.imageUrl} />
-                </Card.Body>
-                <Card.Footer>
-                    <Card.Text>
-                        {props.price}
-                    </Card.Text>
-                </Card.Footer>
-            </Card>
-        </div>
+        <Container>
+            <Row  style={{padding:"20px"}}>
+                <Col>
+                    <Card style={{ width: '20rem', height: '26rem' }} className="border-0">
+                        
+                        <Card.Body>
+                            <Row className="text-center" style={{paddingBottom: '10px', height: '3rem'}}>
+                                <Col><h4>{props.title}</h4></Col>
+                            </Row>
+                            <Card.Img style={{ width: '18rem', height: '17rem' }} variant="top" src={props.imageUrl} className="product-image" />
+                            <Row style={{paddingTop: "20px"}}>
+                                <Col className="text-start">${props.price}</Col>
+                                <Col className="d-flex justify-content-end">
+                                    <Button variant="primary" onClick={handleAddToCart}>Add To Cart</Button>
+                                </Col>
+                            </Row>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
