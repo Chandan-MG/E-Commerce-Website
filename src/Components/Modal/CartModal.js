@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Col, Modal, Row } from "react-bootstrap";
+import { CartContext } from "../Context/Cart-context";
 
-const CartModal = (props) => {
+const CartModal = () => {
+    const {cartItems, handleCloseModal} = useContext(CartContext); 
     return (
-        <Modal show={true} onHide={props.onClose} size="lg">
-            <Modal.Header closeButton  className="border-0">
+        <Modal show={true} onHide={handleCloseModal} size="lg">
+            <Modal.Header closeButton className="border-0">
                 {/* <Modal.Title>Cart</Modal.Title> */}
             </Modal.Header>
             <Modal.Body style={{ paddingTop: '0.5px' }}>
                 <Row className="text-center"><h2>Cart</h2></Row>
-                {props.cartItems.map((item, index) => (
+                {cartItems.map((item, index) => (
                     <Row key={index} className="mb-3">
                         <Col className="text-center" >
                             <Row>
@@ -27,7 +29,7 @@ const CartModal = (props) => {
                         <Col className="text-center">
                             <Row>
                                 <Col>
-                                    <div style={{ border: '2px solid skyblue', padding: '4px', width: '30px', textAlign: 'center' }}>1</div>
+                                    <div style={{ border: '2px solid skyblue', padding: '4px', width: '30px', textAlign: 'center' }}>{item.quantity}</div>
                                 </Col>
                                 <Col>
                                     <Button variant="danger">Remove</Button>
@@ -42,7 +44,7 @@ const CartModal = (props) => {
                 </Row>
                 <Row className="text-center">
                     <Col>
-                        <Button variant="primary" style={{width: '6vw'}} onClick={props.onClose}>
+                        <Button variant="primary" style={{width: '6vw'}} onClick={handleCloseModal}>
                             Buy
                         </Button>
                     </Col>

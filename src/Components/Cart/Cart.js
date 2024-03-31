@@ -3,11 +3,10 @@ import CartModal from "../Modal/CartModal";
 import { CartContext } from "../Context/Cart-context";
   
 const Cart = (props) => {
-    const {cartItems} = useContext(CartContext)
+    const {cartItems, showModal} = useContext(CartContext)
     return(
         <>
-            
-            {props.showModal && (
+            {showModal && (
                 <CartModal 
                     cartItems={cartItems} 
                     onClose={props.closeModal} 
