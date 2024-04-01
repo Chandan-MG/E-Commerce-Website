@@ -1,0 +1,36 @@
+.first-row{
+    background-color: rgb(143, 143, 144);
+    height: 27rem;
+}
+
+.generics-header{
+    font-size: 6rem;
+    color: rgb(255, 255, 255);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+.album-button{
+    width: 18vw;
+    height: 8vh;
+    background-color: rgb(26, 26, 164);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(0, 153, 255);
+}
+
+.album-button span{
+    font-size: 1.5vw;
+    color: rgb(255, 255, 255);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.tours-text{
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: black;
+    font-family: cursive;
+}
+
+.tour-list{
+    width: 40rem;
+}

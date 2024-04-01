@@ -8,11 +8,11 @@ const NavigationPage =()=>{
     return(
         <>
             <Navbar bg="dark" data-bs-theme="dark">
-                <Container>
-                    <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/store">Store</Nav.Link>
-                        <Nav.Link as={Link} to="/about">About</Nav.Link>
+                <Container className="justify-content-center">
+                    <Nav >
+                        <Nav.Link as={Link} to="/" className="nav-link">HOME</Nav.Link>
+                        <Nav.Link as={Link} to="/store" className="nav-link">STORE</Nav.Link>
+                        <Nav.Link as={Link} to="/about" className="nav-link">ABOUT</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
