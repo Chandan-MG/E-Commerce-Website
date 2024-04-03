@@ -13,6 +13,7 @@ const NavigationPage =()=>{
                         <Nav.Link as={Link} to="/" className="nav-link">HOME</Nav.Link>
                         <Nav.Link as={Link} to="/store" className="nav-link">STORE</Nav.Link>
                         <Nav.Link as={Link} to="/about" className="nav-link">ABOUT</Nav.Link>
+                        <Nav.Link as={Link} to="/contact" className="nav-link">CONTACT US</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

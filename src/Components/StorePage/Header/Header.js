@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Button, Col } from "react-bootstrap";
 import { CartContext } from "../Context/Cart-context";
-import { Link } from 'react-router-dom';
 
 const Header =()=>{
     const {handleShowModal, cartItems} = useContext(CartContext);

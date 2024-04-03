@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import HomePage from "./HomePage";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import './Tours.css';
 
