@@ -3,6 +3,7 @@ import './ProductItem.css';
 import Card from 'react-bootstrap/Card';
 import { Button, Col, Container, Row } from "react-bootstrap";
 import {CartContext} from '../Context/Cart-context.js';
+import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
     const {addToCart} = useContext(CartContext);
@@ -24,7 +25,9 @@ const ProductItem = (props) => {
                             <Row style={{paddingTop: "20px"}}>
                                 <Col className="text-start">${props.price}</Col>
                                 <Col className="d-flex justify-content-end">
-                                    <Button variant="primary" onClick={handleAddToCart}>Add To Cart</Button>
+                                    <Link to={`/productdetail/${props.title}`}>
+                                        <Button variant="primary" >Buy</Button>
+                                    </Link>
                                 </Col>
                             </Row>
                         </Card.Body>

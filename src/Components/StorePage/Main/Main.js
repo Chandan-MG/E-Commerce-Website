@@ -32,7 +32,9 @@ const Main =()=>{
     const [products, setProducts] = useState(productsArr);
   
     return(
-        <ProductList products={products} />
+        <>
+          <ProductList products={products} />
+        </>
     )
 }
 
