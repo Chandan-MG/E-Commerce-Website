@@ -3,7 +3,7 @@ import CartModal from "../Modal/CartModal";
 import { CartContext } from "../Context/Cart-context";
   
 const Cart = (props) => {
-    const {cartItems, showModal} = useContext(CartContext)
+    const {cartItems, showModal} = useContext(CartContext);
     return(
         <>
             {showModal && (

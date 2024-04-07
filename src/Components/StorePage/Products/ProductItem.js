@@ -25,9 +25,9 @@ const ProductItem = (props) => {
                             <Row style={{paddingTop: "20px"}}>
                                 <Col className="text-start">${props.price}</Col>
                                 <Col className="d-flex justify-content-end">
-                                    <Link to={`/productdetail/${props.title}`}>
-                                        <Button variant="primary" >Buy</Button>
-                                    </Link>
+                                    {/* <Link to={`/productdetail/${props.title}`}> */}
+                                        <Button variant="primary" onClick={handleAddToCart}>Buy</Button>
+                                    {/* </Link> */}
                                 </Col>
                             </Row>
                         </Card.Body>

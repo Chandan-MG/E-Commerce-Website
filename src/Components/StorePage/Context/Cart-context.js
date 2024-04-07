@@ -19,6 +19,7 @@ const CartContextProvider = ({children}) => {
     };
 
     const addToCart = (item) => {
+        // console.log(item);
         const existingItemIndex = cartItems.findIndex((cartItem) => {
             return cartItem.title === item.title;
         });

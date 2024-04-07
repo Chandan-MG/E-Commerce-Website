@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../Context/Cart-context";
+import Header from "../Header/Header";
 
 const productsArr = [
   {
@@ -50,6 +51,7 @@ const ProductDetail = () => {
 
   return (
     <div className="flex mx-auto w-[40rem] my-14 justify-between align-middle">
+      <Header />
       <div>
         <img src={product.imageUrl} alt={product.title} />
       </div>
