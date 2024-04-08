@@ -79,30 +79,5 @@ function App() {
   );
 }
 
-// const App = () => {
-//   return (
-//     <Router>
-//       <CartContextProvider> {/* Wrap your components with the CartContextProvider */}
-//         <Switch>
-//           <Route path="/">
-//             <HomePage />
-//           </Route>
-//           <Route path="/store">
-//             <StorePage />
-//           </Route>
-//           <Route path="/about">
-//             <AboutPage />
-//           </Route>
-//           <Route path="/contact">
-//             <ContactPage />
-//           </Route>
-//           <Route path="/productdetail/:title">
-//             <ProductDetail />
-//           </Route>
-//         </Switch>
-//       </CartContextProvider>
-//     </Router>
-//   );
-// };
 
 export default App;

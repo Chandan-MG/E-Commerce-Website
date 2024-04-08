@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import AuthContext from "../../AuthPage/Auth-Context";
 
 export const CartContext = createContext();
 
@@ -6,9 +7,31 @@ const cartElements = [];
   
 
 const CartContextProvider = ({children}) => {
-    const [cartItems, setCartItems] = useState(cartElements);
+    const [cartItems, setCartItems] = useState([]);
+    const ctx = useContext(AuthContext);
    
     const [showModal, setShowModal] = useState(false);
+
+    useEffect(() => {
+        const fetchCartItems = async () => {
+            try {
+                const useremail = ctx.userEmail
+                .split("")
+                .filter((x) => x.charCodeAt(0) >= 97 && x.charCodeAt(0) <= 122)
+                .join("");
+                const response = await fetch(`https://crudcrud.com/api/eb09af7a554f437ba458dfc6d04d7281/${useremail}`);
+                if (response.ok) {
+                    const cartItems = await response.json();
+                    // Update cart context with fetched cart items
+                    setCartItems(cartItems);
+                }
+            } catch (error) {
+                console.error('Error fetching cart items:', error);
+            }
+        };
+
+        fetchCartItems();
+    }, [ctx.userEmail]);
 
     const handleShowModal = () => {
         setShowModal(true);
@@ -32,7 +55,6 @@ const CartContextProvider = ({children}) => {
             const newItem = { ...item, quantity: 1 };
             const updatedCartItems = [...cartItems, newItem];
             setCartItems(updatedCartItems);
-            // console.log('New item added to cart:', cartItems);
         }
     };
     

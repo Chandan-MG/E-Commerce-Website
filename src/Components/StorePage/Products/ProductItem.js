@@ -2,15 +2,38 @@ import React, { useContext } from "react";
 import './ProductItem.css';
 import Card from 'react-bootstrap/Card';
 import { Button, Col, Container, Row } from "react-bootstrap";
-import {CartContext} from '../Context/Cart-context.js';
-import { Link } from "react-router-dom";
+// import {CartContext} from '../Context/Cart-context.js';
+// import { Link } from "react-router-dom";
+import AuthContext from "../../AuthPage/Auth-Context.js";
 
 const ProductItem = (props) => {
-    const {addToCart} = useContext(CartContext);
+    const ctx = useContext(AuthContext);
+    // const cartCtx = useContext(CartContext);
+
+    const handleCrudStore = async() =>{
+        const useremail = ctx.userEmail
+        .split("")
+        .filter((x) => x.charCodeAt(0) >= 97 && x.charCodeAt(0) <= 122)
+        .join("");
+        // console.log(useremail);
+        const response = await fetch(
+            `https://crudcrud.com/api/eb09af7a554f437ba458dfc6d04d7281/${useremail}`,
+            {
+              method: "POST",
+              body: JSON.stringify(props),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+        );
+    }
 
     const handleAddToCart =()=>{
-        addToCart(props)
+        // addToCart(props)
+        handleCrudStore()
     }
+
+    
     return(
         <Container>
             <Row  style={{padding:"20px"}}>
