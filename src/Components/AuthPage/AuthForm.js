@@ -1,10 +1,8 @@
 import { useState, useRef, useContext } from 'react';
 
 import './AuthForm.css';
-import AuthContext from './Auth-Context.js';
 import { Redirect, useHistory } from 'react-router-dom/cjs/react-router-dom.js';
-// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-// import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import AuthContext from './Auth-Context';
 
 const AuthForm = () => {
   const authCtx = useContext(AuthContext);
@@ -25,13 +23,8 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     setIsLoading(true);
-    let url;
-    if(isLogin){
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMiBeqYWzNFH0oUHL8f_fV1zZ8cXp7QDI';
-    }
-    else{
-      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCMiBeqYWzNFH0oUHL8f_fV1zZ8cXp7QDI';
-    }
+
+    let url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCMiBeqYWzNFH0oUHL8f_fV1zZ8cXp7QDI';
     fetch(url,
       {
         method: 'POST',
@@ -59,7 +52,7 @@ const AuthForm = () => {
       }
     ).then(data=>{
       authCtx.login(data.idToken);
-      history.push('/home');
+      history.push('/store');
     //   console.log(data.idToken);
     }).catch(err=>{
       alert(err.message);

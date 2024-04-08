@@ -48,26 +48,26 @@ function App() {
       <Layout>
       {/* <NavigationPage /> */}
         <Switch>
-          <Route path='/home'>
-            <HomePage />
-          </Route>
+            { authCtx.isLoggedIn && (<Route path='/home'>
+              <HomePage />
+            </Route>)}
 
           
-            <Route path='/' exact>
+            { !authCtx.isLoggedIn && (<Route path='/' exact>
               <AuthForm />
-            </Route>
+            </Route>)}
 
           
-            <Route path='/store'>
+            { authCtx.isLoggedIn && (<Route path='/store'>
               <StorePage />
-            </Route>
-            <Route path='/productdetail:title'>
+            </Route>)}
+            { authCtx.isLoggedIn && (<Route path='/productdetail:title'>
               <ProductDetail />
-            </Route>
+            </Route>)}
 
-            <Route path='/about'>
+            { authCtx.isLoggedIn && (<Route path='/about'>
               <AboutPage />
-            </Route>
+            </Route>)}
         
 
           <Route path='*'>

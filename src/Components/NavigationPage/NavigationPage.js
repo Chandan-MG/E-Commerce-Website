@@ -14,22 +14,22 @@ const NavigationPage =()=>{
             <nav>
                 <ul>
                 
-                    <li>
-                    <Link to='/'>Login</Link>
-                    </li>
+                    { !isLoggedIn && (<li>
+                        <Link to='/'>Login</Link>
+                    </li>)}
                 
                 
-                    <li>
-                    <Link to='/home'>Home</Link>
-                    </li>
+                    { isLoggedIn && (<li>
+                        <Link to='/home'>Home</Link>
+                    </li>)}
                 
-                    <li>
-                    <Link to='/store'>Store</Link>
-                    </li>
+                    { isLoggedIn && (<li>
+                        <Link to='/store'>Store</Link>
+                    </li>)}
                 
-                    <li>
-                    <Link to='/about'>About</Link>
-                    </li>
+                    { isLoggedIn && (<li>
+                        <Link to='/about'>About</Link>
+                    </li>)}
                 
                 </ul>
             </nav>
